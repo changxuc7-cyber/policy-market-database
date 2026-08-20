@@ -1,0 +1,17 @@
+V5 碳政策专题升级版
+
+只收录：
+- 全国碳市场 / 碳交易 / 配额 / 履约
+- CCER / 温室气体自愿减排 / 方法学
+- 碳排放 / 碳达峰 / 碳中和 / 双碳 / 节能降碳
+- 绿电 / 绿证 / 绿色电力交易 / 绿电直连
+- 温室气体核算 / 清单 / 应对气候变化
+
+只允许中央权威政府域名：
+gov.cn
+ndrc.gov.cn
+nea.gov.cn
+mee.gov.cn
+
+升级后重新运行：
+Actions → Update real policy data → Run workflow

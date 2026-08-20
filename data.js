@@ -49,11 +49,9 @@ window.APP_DATA = {
     {type:"抵销比例",name:"外地CCER抵销比例上限",value:"2.5",unit:"%",market:"北京",source:"北京市碳排放权交易管理办法"}
   ],
   sources:[
-    {name:"生态环境部",url:"mee.gov.cn",status:"正常",last:"2026-08-20 15:08",newCount:6,latency:"1.2s"},
-    {name:"全国碳市场",url:"cneeex.com",status:"正常",last:"2026-08-20 15:10",newCount:2,latency:"0.9s"},
-    {name:"北京碳市场",url:"beea.org.cn",status:"正常",last:"2026-08-20 14:55",newCount:1,latency:"1.5s"},
-    {name:"广东碳市场",url:"cnemission.com",status:"正常",last:"2026-08-20 14:58",newCount:1,latency:"1.1s"},
-    {name:"国家能源局",url:"nea.gov.cn",status:"正常",last:"2026-08-20 14:40",newCount:0,latency:"1.8s"},
-    {name:"示例异常源",url:"example-source.cn",status:"异常",last:"2026-08-20 12:03",newCount:0,latency:"超时"}
+    {name:"国务院/中国政府网",url:"gov.cn",status:"正常",last:"GitHub Actions自动更新",newCount:0,latency:"权威源"},
+    {name:"国家发展改革委",url:"ndrc.gov.cn",status:"正常",last:"GitHub Actions自动更新",newCount:0,latency:"权威源"},
+    {name:"国家能源局",url:"nea.gov.cn",status:"正常",last:"GitHub Actions自动更新",newCount:0,latency:"权威源"},
+    {name:"生态环境部",url:"mee.gov.cn",status:"正常",last:"GitHub Actions自动更新",newCount:0,latency:"权威源"}
   ]
 };

@@ -176,3 +176,5 @@ dialog::backdrop{background:rgba(20,34,56,.35);backdrop-filter:blur(2px)}
 
 .source-link-box a{color:var(--blue);font-weight:700;text-decoration:none}
 .source-link-box a:hover{text-decoration:underline}
+
+.badge.teal{background:#e7f7f5;color:#16786f}

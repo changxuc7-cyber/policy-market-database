@@ -18,7 +18,8 @@ const badgeClass = cat => ({
   "CCER政策":"cyan",
   "地方碳市场":"purple",
   "绿电绿证":"gold",
-  "生态环境综合政策":"indigo"
+  "双碳/碳排放管理":"indigo",
+  "气候变化/温室气体":"teal"
 }[cat]||"indigo");
 
 function renderLatest(){
