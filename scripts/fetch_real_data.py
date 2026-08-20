@@ -1,19 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Fetch recent policy metadata from official MEE pages and write:
-  data/live-policies.js
-  data/live-meta.json
-This script stores metadata/short summaries, not full policy text.
-"""
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -21,215 +16,316 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parents[1]
 OUT_JS = ROOT / "data" / "live-policies.js"
 OUT_META = ROOT / "data" / "live-meta.json"
-
 TZ_CN = timezone(timedelta(hours=8))
 
-SOURCES = [
-    ("生态环境部-部文件", "https://www.mee.gov.cn/zcwj/bwj/wj/"),
-    ("生态环境部-公告", "https://www.mee.gov.cn/zcwj/bwj/gg/"),
-    ("生态环境部-办公厅文件", "https://www.mee.gov.cn/zcwj/bgtwj/wj/"),
-]
+session = requests.Session()
+session.headers.update({
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131 Safari/537.36",
+    "Accept-Language": "zh-CN,zh;q=0.9",
+})
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (compatible; PolicyMarketDatabase/1.0; +https://github.com/)"
+# 只允许中央权威政府网站
+ALLOWED_HOSTS = {
+    "www.gov.cn", "gov.cn",
+    "www.ndrc.gov.cn", "ndrc.gov.cn", "zfxxgk.ndrc.gov.cn",
+    "www.nea.gov.cn", "nea.gov.cn", "zfxxgk.nea.gov.cn",
+    "www.mee.gov.cn", "mee.gov.cn",
 }
 
-session = requests.Session()
-session.headers.update(HEADERS)
+# 权威来源入口
+SOURCE_PAGES = [
+    ("生态环境部", "https://www.mee.gov.cn/zcwj/"),
+    ("生态环境部", "https://www.mee.gov.cn/zcwj/bwj/wj/"),
+    ("生态环境部", "https://www.mee.gov.cn/zcwj/bwj/gg/"),
+    ("生态环境部", "https://www.mee.gov.cn/zcwj/bgtwj/wj/"),
+
+    ("国家发展改革委", "https://www.ndrc.gov.cn/xxgk/zcfb/tz/index.html"),
+    ("国家发展改革委", "https://www.ndrc.gov.cn/xxgk/zcfb/ghxwj/index.html"),
+    ("国家发展改革委", "https://www.ndrc.gov.cn/xxgk/wjk/index.html"),
+
+    ("国家能源局", "https://www.nea.gov.cn/"),
+    ("国家能源局", "https://zfxxgk.nea.gov.cn/"),
+
+    ("国务院/中国政府网", "https://www.gov.cn/zhengce/"),
+]
+
+# 最终入库必须命中至少一个“碳主题强关键词”
+CORE_TERMS = [
+    # 碳市场
+    "全国碳排放权交易市场", "全国碳市场", "碳排放权交易", "碳市场",
+    "碳排放配额", "配额清缴", "重点排放单位", "碳交易",
+
+    # CCER / 自愿减排
+    "温室气体自愿减排", "核证自愿减排", "国家核证自愿减排量",
+    "自愿减排交易", "自愿减排项目", "CCER",
+
+    # 双碳 / 碳排放管理
+    "碳达峰", "碳中和", "双碳", "碳排放双控", "碳排放总量",
+    "碳排放强度", "碳排放核算", "碳排放管理", "二氧化碳排放",
+    "节能降碳", "减污降碳",
+
+    # 温室气体 / 气候变化
+    "温室气体排放", "温室气体清单", "企业温室气体排放",
+    "应对气候变化", "国家自主贡献",
+
+    # 绿电绿证
+    "绿色电力证书", "绿证", "绿色电力交易", "绿电交易",
+    "绿电直连", "绿色电力消费", "绿电消费", "非化石能源电力消费",
+]
+
+# 列表页先用更宽的词做候选，详情页再严格过滤
+CANDIDATE_TERMS = CORE_TERMS + [
+    "可再生能源", "非化石能源", "新型能源体系", "绿色低碳",
+    "能源绿色转型", "低碳", "方法学", "排放核算", "能源消费",
+]
+
+NOISE_TERMS = [
+    "危险废物", "新化学物质", "排污许可证", "水污染物", "土壤污染",
+    "地下水污染", "海洋倾倒", "核安全", "放射性污染", "环境影响报告",
+    "生态文明奖", "科技活动周", "实验室", "工程技术中心",
+]
 
 DATE_RE = re.compile(r"(20\d{2})[-年/.](\d{1,2})[-月/.](\d{1,2})")
-DOC_RE = re.compile(r"((?:环|发改|国办|国发|公告)[^\s，。；]{0,16}[〔\[]20\d{2}[〕\]][^\s，。；]{0,12}号)")
-CARBON_WORDS = ("碳排放", "碳市场", "碳达峰", "碳中和", "气候变化", "温室气体", "自愿减排", "CCER", "配额", "履约")
-CCER_WORDS = ("CCER", "自愿减排", "方法学")
-GREEN_WORDS = ("绿证", "绿色电力")
-MARKET_WORDS = ("全国碳排放权交易市场", "全国碳市场", "重点排放单位", "配额清缴")
+DOC_RE = re.compile(
+    r"((?:国发|国办发|发改[\u4e00-\u9fa5]*|环[\u4e00-\u9fa5]*|国能[\u4e00-\u9fa5]*|公告)"
+    r"[〔\[]20\d{2}[〕\]][^\s，。；]{0,20}号)"
+)
 
-def norm_date(text: str) -> str:
+def clean(s):
+    return re.sub(r"\s+", " ", s or "").strip()
+
+def contains_any(text, terms):
+    u = (text or "").upper()
+    return any(x.upper() in u for x in terms)
+
+def norm_date(text):
     m = DATE_RE.search(text or "")
     if not m:
         return ""
     y, mo, d = map(int, m.groups())
     return f"{y:04d}-{mo:02d}-{d:02d}"
 
-def clean_text(s: str) -> str:
-    return re.sub(r"\s+", " ", s or "").strip()
+def allowed_url(url):
+    host = (urlparse(url).hostname or "").lower()
+    return any(host == h or host.endswith("." + h) for h in ALLOWED_HOSTS)
 
-def category_for(text: str) -> str:
-    upper = text.upper()
-    if any(w.upper() in upper for w in CCER_WORDS):
+def is_candidate(title, context=""):
+    return contains_any(f"{title} {context}", CANDIDATE_TERMS)
+
+def is_final_relevant(title, body):
+    text = f"{title} {body}"
+    if not contains_any(text, CORE_TERMS):
+        return False
+    if contains_any(text, NOISE_TERMS) and not contains_any(title, CORE_TERMS):
+        return False
+    return True
+
+def classify(text):
+    if contains_any(text, ["CCER","温室气体自愿减排","核证自愿减排","国家核证自愿减排量","自愿减排交易","自愿减排项目"]):
         return "CCER政策"
-    if any(w in text for w in GREEN_WORDS):
-        return "绿电绿证"
-    if any(w in text for w in MARKET_WORDS):
+    if contains_any(text, ["全国碳排放权交易市场","全国碳市场","碳排放权交易","碳排放配额","配额清缴","重点排放单位","碳交易"]):
         return "全国碳市场"
-    if any(w in text for w in CARBON_WORDS):
-        return "生态环境综合政策"
-    return "生态环境综合政策"
+    if contains_any(text, ["绿色电力证书","绿证","绿色电力交易","绿电交易","绿电直连","绿色电力消费","绿电消费","非化石能源电力消费"]):
+        return "绿电绿证"
+    if contains_any(text, ["碳达峰","碳中和","双碳","碳排放双控","碳排放总量","碳排放强度","碳排放核算","碳排放管理","二氧化碳排放","节能降碳","减污降碳"]):
+        return "双碳/碳排放管理"
+    return "气候变化/温室气体"
 
-def market_for(text: str) -> str:
-    upper = text.upper()
-    if any(w.upper() in upper for w in CCER_WORDS):
-        return "CCER"
-    if any(w in text for w in GREEN_WORDS):
-        return "绿证"
-    if any(w in text for w in MARKET_WORDS):
-        return "全国CEA"
-    if "气候变化" in text or "碳达峰" in text or "碳中和" in text:
-        return "气候政策"
-    return "其他"
+def market_for(category):
+    return {
+        "CCER政策": "CCER",
+        "全国碳市场": "全国CEA",
+        "绿电绿证": "绿电/绿证",
+        "双碳/碳排放管理": "双碳政策",
+        "气候变化/温室气体": "气候政策",
+    }[category]
 
-def page_urls(base: str, pages: int = 5):
-    yield base
-    for i in range(1, pages):
-        yield urljoin(base, f"index_{i}.shtml")
+def agency_from_url(url):
+    host = (urlparse(url).hostname or "").lower()
+    if "ndrc.gov.cn" in host: return "国家发展改革委"
+    if "nea.gov.cn" in host: return "国家能源局"
+    if "mee.gov.cn" in host: return "生态环境部"
+    if "gov.cn" in host: return "国务院/中国政府网"
+    return host
 
-def fetch(url: str) -> str:
+def source_priority(url, category):
+    host = (urlparse(url).hostname or "").lower()
+    if category in ("全国碳市场", "CCER政策"):
+        order = ["mee.gov.cn", "gov.cn", "ndrc.gov.cn", "nea.gov.cn"]
+    elif category == "绿电绿证":
+        order = ["ndrc.gov.cn", "nea.gov.cn", "gov.cn", "mee.gov.cn"]
+    else:
+        order = ["gov.cn", "ndrc.gov.cn", "nea.gov.cn", "mee.gov.cn"]
+    for i, d in enumerate(order):
+        if host == d or host.endswith("." + d):
+            return i
+    return 99
+
+def fetch(url):
     r = session.get(url, timeout=25)
     r.raise_for_status()
-    r.encoding = r.apparent_encoding or "utf-8"
+    if not r.encoding or r.encoding.lower() == "iso-8859-1":
+        r.encoding = r.apparent_encoding or "utf-8"
     return r.text
 
-def extract_listing(source_name: str, base: str):
+def page_variants(url, n=6):
+    seen = set()
+    variants = [url]
+    for i in range(1, n):
+        if url.endswith("/"):
+            variants += [urljoin(url, f"index_{i}.shtml"), urljoin(url, f"index_{i}.html")]
+        elif url.endswith("index.html"):
+            variants += [url.replace("index.html", f"index_{i}.html"),
+                         url.replace("index.html", f"index_{i}.shtml")]
+    for v in variants:
+        if v not in seen:
+            seen.add(v)
+            yield v
+
+def discover_candidates():
     found = {}
-    for page_url in page_urls(base):
-        try:
-            html = fetch(page_url)
-        except Exception:
-            continue
-        soup = BeautifulSoup(html, "html.parser")
-        for a in soup.find_all("a", href=True):
-            title = clean_text(a.get_text(" ", strip=True))
-            href = urljoin(page_url, a["href"])
-            if not title or len(title) < 6:
+    for label, base in SOURCE_PAGES:
+        for page_url in page_variants(base):
+            try:
+                html = fetch(page_url)
+            except Exception as e:
+                print("listing skip:", page_url, str(e)[:80])
                 continue
-            if not href.startswith("http"):
-                continue
-            parent_text = clean_text(a.parent.get_text(" ", strip=True) if a.parent else "")
-            date = norm_date(parent_text)
-            if not date:
-                continue
-            if "mee.gov.cn" not in href:
-                continue
-            found[href] = {"source_name": source_name, "date": date, "title": title, "source_url": href}
-        time.sleep(0.25)
+            soup = BeautifulSoup(html, "html.parser")
+            for a in soup.find_all("a", href=True):
+                title = clean(a.get_text(" ", strip=True))
+                if len(title) < 6:
+                    continue
+                href = urljoin(page_url, a["href"])
+                if not allowed_url(href):
+                    continue
+                context = clean(a.parent.get_text(" ", strip=True) if a.parent else "")
+                if not is_candidate(title, context):
+                    continue
+                found[href] = {
+                    "title": title,
+                    "source_url": href,
+                    "listing_date": norm_date(context),
+                    "discovered_from": label,
+                }
+            time.sleep(0.12)
     return list(found.values())
 
-def parse_detail(item: dict) -> dict:
+def meta_content(soup, names):
+    for name in names:
+        t = soup.find("meta", attrs={"name": name})
+        if t and t.get("content"): return clean(t["content"])
+        t = soup.find("meta", attrs={"property": name})
+        if t and t.get("content"): return clean(t["content"])
+    return ""
+
+def parse_detail(item):
     try:
         html = fetch(item["source_url"])
-    except Exception:
-        html = ""
-    soup = BeautifulSoup(html, "html.parser") if html else None
-    full_text = clean_text(soup.get_text("\n", strip=True)) if soup else item["title"]
+    except Exception as e:
+        print("detail skip:", item["source_url"], str(e)[:80])
+        return None
 
-    title = item["title"]
-    if soup:
-        meta_title = soup.find("meta", attrs={"name":"ArticleTitle"})
-        if meta_title and meta_title.get("content"):
-            title = clean_text(meta_title["content"])
+    soup = BeautifulSoup(html, "html.parser")
+    body = clean(soup.get_text("\n", strip=True))
+    title = meta_content(soup, ["ArticleTitle", "og:title"]) or item["title"]
+    title = re.sub(r"[-_—|].*(?:中国政府网|国家发展和改革委员会|国家能源局|生态环境部).*?$", "", title).strip()
+    if not is_final_relevant(title, body[:14000]):
+        return None
 
-    date = item["date"]
-    if soup:
-        meta_date = soup.find("meta", attrs={"name":"PubDate"})
-        if meta_date and meta_date.get("content"):
-            date = norm_date(meta_date["content"]) or date
+    category = classify(f"{title} {body[:10000]}")
+    date = norm_date(meta_content(soup, ["PubDate","pubDate","publishdate","date"])) or item["listing_date"] or norm_date(body[:2500])
 
-    doc = ""
-    dm = DOC_RE.search(full_text)
-    if dm:
-        doc = clean_text(dm.group(1))
+    dm = DOC_RE.search(body[:6000])
+    doc = clean(dm.group(1)) if dm else ""
 
-    publisher = "生态环境部"
-    pm = re.search(r"发布机关\s*(.*?)\s*(?:生成日期|文\s*号|文　　号|主题词|主 题 词)", full_text)
-    if pm:
-        p = clean_text(pm.group(1))
-        if 1 < len(p) < 120:
-            publisher = p
+    publisher = agency_from_url(item["source_url"])
+    for pat in [
+        r"发布机关[:：\s]*([^\n]{2,80}?)(?=生成日期|成文日期|发布日期|文号|文\s*号|$)",
+        r"主办单位[:：\s]*([^\n]{2,80}?)(?=制发日期|索引号|$)",
+        r"发文机关[:：\s]*([^\n]{2,80}?)(?=成文日期|发布日期|$)",
+    ]:
+        m = re.search(pat, body[:5000])
+        if m:
+            p = clean(m.group(1))
+            if 2 <= len(p) <= 80:
+                publisher = p
+                break
 
-    # Short factual summary: prefer meta description, otherwise first relevant sentence.
-    summary = ""
-    if soup:
-        desc = soup.find("meta", attrs={"name":"description"})
-        if desc and desc.get("content"):
-            d = clean_text(desc["content"])
-            if d and "中华人民共和国生态环境部" not in d:
-                summary = d[:180]
-    if not summary:
-        # Avoid nav/footer by taking text around title where possible
-        pos = full_text.find(title)
-        segment = full_text[pos:pos+900] if pos >= 0 else full_text[:900]
-        sentences = [clean_text(x) for x in re.split(r"[。！？]", segment) if len(clean_text(x)) >= 18]
-        summary = (sentences[1] if len(sentences) > 1 else (sentences[0] if sentences else title))[:180]
+    desc = meta_content(soup, ["description","Description"])
+    if desc and "中华人民共和国" not in desc:
+        summary = desc[:180]
+    else:
+        positions = [body.find(k) for k in CORE_TERMS if body.find(k) >= 0]
+        pos = min(positions) if positions else max(0, body.find(title))
+        excerpt = body[max(0,pos-100):pos+900]
+        sentences = [clean(x) for x in re.split(r"[。！？]", excerpt) if 18 <= len(clean(x)) <= 260]
+        summary = (sentences[0] if sentences else title)[:180]
 
-    combined = f"{title} {summary} {full_text[:2500]}"
-    category = category_for(combined)
-    market = market_for(combined)
-    status = "征求意见" if ("征求意见" in title or "征求意见" in combined[:800]) else "有效"
+    industries = [k for k in ["发电","钢铁","水泥","铝冶炼","石化","化工","建材","有色","建筑","交通","农业","林业","能源","电力","数据中心"] if k in body[:14000]]
+    if not industries: industries = ["综合"]
 
-    scope = ["全国"]
-    industries = []
-    for kw in ("发电","钢铁","水泥","铝冶炼","石化","化工","建筑","交通","农业","林业","能源","电力"):
-        if kw in combined and kw not in industries:
-            industries.append(kw)
-    if not industries:
-        industries = ["生态环境"]
-
+    stable_id = int(hashlib.sha1(item["source_url"].encode()).hexdigest()[:10], 16)
     return {
-        "id": abs(hash(item["source_url"])) % 900000000 + 100000000,
+        "id": stable_id,
         "date": date,
         "title": title,
         "doc": doc,
         "publisher": publisher,
         "category": category,
-        "status": status,
-        "market": market,
-        "summary": summary or title,
+        "status": "征求意见" if "征求意见" in title else "有效",
+        "market": market_for(category),
+        "summary": summary,
         "source_url": item["source_url"],
-        "scope": scope,
+        "source_agency": agency_from_url(item["source_url"]),
+        "scope": ["全国"],
         "industries": industries,
-        "parameters": [["结构化状态","待进一步提取"]],
-        "compliance": [["执行节点","待进一步提取"]],
-        "impact": "市场影响需结合真实交易数据计算，不由采集程序主观判断。"
+        "parameters": [["结构化状态","待后续提取关键参数"]],
+        "compliance": [["执行节点","待后续提取履约节点"]],
+        "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。",
     }
 
+def deduplicate(records):
+    by_title = {}
+    for r in records:
+        key = re.sub(r"[\s《》（）()，,。:：\-—]", "", r["title"])
+        old = by_title.get(key)
+        if old is None or source_priority(r["source_url"], r["category"]) < source_priority(old["source_url"], old["category"]):
+            by_title[key] = r
+    return list(by_title.values())
+
 def main():
-    items = []
-    seen = set()
-    for source_name, base in SOURCES:
-        for x in extract_listing(source_name, base):
-            if x["source_url"] not in seen:
-                seen.add(x["source_url"])
-                items.append(x)
+    candidates = discover_candidates()
+    print("candidate links:", len(candidates))
+    records = []
+    for i, item in enumerate(candidates, 1):
+        r = parse_detail(item)
+        if r: records.append(r)
+        if i % 15 == 0: time.sleep(0.2)
 
-    # Newest first, limit detail requests for robustness.
-    items.sort(key=lambda x: x["date"], reverse=True)
-    items = items[:80]
+    records = deduplicate(records)
+    records.sort(key=lambda x: (x.get("date") or "0000-00-00", x["title"]), reverse=True)
 
-    policies = []
-    for i, item in enumerate(items, 1):
-        try:
-            policies.append(parse_detail(item))
-        except Exception as e:
-            print("detail failed:", item["source_url"], e)
-        if i % 10 == 0:
-            time.sleep(0.5)
-
-    policies.sort(key=lambda x: x["date"], reverse=True)
-    generated = datetime.now(TZ_CN).isoformat(timespec="seconds")
+    source_names = sorted(set(r["source_agency"] for r in records))
     meta = {
-        "generated_at": generated,
-        "source_label": "MEE实时",
-        "source_count": len(SOURCES),
-        "policy_count": len(policies),
-        "mode": "live"
+        "generated_at": datetime.now(TZ_CN).isoformat(timespec="seconds"),
+        "source_label": "权威碳政策",
+        "source_count": len(source_names),
+        "sources": source_names,
+        "policy_count": len(records),
+        "mode": "live-carbon-filtered",
+        "topics": ["全国碳市场","CCER/自愿减排","双碳/碳排放","绿电绿证","气候变化/温室气体"],
     }
 
     OUT_JS.parent.mkdir(parents=True, exist_ok=True)
-    js = "window.LIVE_POLICY_META = " + json.dumps(meta, ensure_ascii=False, indent=2) + ";\n"
-    js += "window.LIVE_POLICIES = " + json.dumps(policies, ensure_ascii=False, indent=2) + ";\n"
-    OUT_JS.write_text(js, encoding="utf-8")
+    OUT_JS.write_text(
+        "window.LIVE_POLICY_META = " + json.dumps(meta, ensure_ascii=False, indent=2) + ";\n" +
+        "window.LIVE_POLICIES = " + json.dumps(records, ensure_ascii=False, indent=2) + ";\n",
+        encoding="utf-8"
+    )
     OUT_META.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"wrote {len(policies)} policies")
+    print("wrote", len(records), "carbon-related policies")
+    print("sources:", ", ".join(source_names))
 
 if __name__ == "__main__":
     main()
