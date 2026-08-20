@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-20T16:45:00+08:00",
-  "source_label": "生态环境部",
-  "source_count": 1,
-  "policy_count": 8,
-  "mode": "seed"
+  "generated_at": "2026-08-20T17:20:58+08:00",
+  "source_label": "MEE实时",
+  "source_count": 3,
+  "policy_count": 80,
+  "mode": "live"
 }
