@@ -51,7 +51,7 @@
       <section id="dashboard" class="view active">
         <div class="metrics-grid">
           <article class="metric-card">
-            <div class="metric-label">政策总数</div>
+            <div class="metric-label">已同步政策</div>
             <div class="metric-value" id="policyCount">247</div>
             <div class="metric-note positive">↑ +12 本月新增</div>
           </article>
@@ -239,10 +239,17 @@
     </main>
   </div>
 
-  <dialog id="policyDialog">
+  <dialog id="policyDialog" class="policy-dialog">
     <div class="dialog-head">
       <div><span class="eyebrow">政策详情</span><h2 id="dialogTitle"></h2></div>
       <button class="icon-btn" id="closeDialog" aria-label="关闭">×</button>
+    </div>
+    <div class="policy-detail-tabs" id="policyDetailTabs">
+      <button class="detail-tab active" data-detail-tab="overview">文件信息</button>
+      <button class="detail-tab" data-detail-tab="scope">适用范围</button>
+      <button class="detail-tab" data-detail-tab="params">关键参数</button>
+      <button class="detail-tab" data-detail-tab="compliance">履约节点</button>
+      <button class="detail-tab" data-detail-tab="impact">市场影响</button>
     </div>
     <div class="dialog-body" id="dialogBody"></div>
   </dialog>
@@ -250,6 +257,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="data.js"></script>
+  <script src="data/live-policies.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

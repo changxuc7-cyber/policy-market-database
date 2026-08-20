@@ -1,0 +1,17 @@
+政策与市场事件数据库 V4 — 真实数据自动更新版
+
+新增：
+1. data/live-policies.js：真实政策数据文件
+2. scripts/fetch_real_data.py：生态环境部官方数据采集器
+3. .github/workflows/update-real-data.yml：每天08:30自动运行
+4. data/live-meta.json：数据更新时间/数量元数据
+5. 政策详情中的“查看官方原文”链接
+
+首次部署后：
+GitHub → Actions → Update real policy data → Run workflow
+运行完成后会自动更新 data/live-policies.js，并触发 GitHub Pages 重新发布。
+
+注意：
+- 当前第一阶段只自动接入生态环境部政策数据。
+- 市场行情仍是演示数据，下一阶段接全国CEA/CCER/地方市场。
+- 采集程序只存元数据和短摘要，不存完整政策正文。
