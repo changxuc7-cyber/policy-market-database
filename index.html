@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>政策与市场事件数据库</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 5.5C4 3.57 7.58 2 12 2s8 1.57 8 3.5v13C20 20.43 16.42 22 12 22s-8-1.57-8-3.5v-13Zm2 0C6 6.03 8.17 7 12 7s6-.97 6-1.5S15.83 4 12 4 6 4.97 6 5.5Zm0 4C6 10.03 8.17 11 12 11s6-.97 6-1.5V8.2C16.5 8.72 14.42 9 12 9s-4.5-.28-6-.8v1.3Zm0 4C6 14.03 8.17 15 12 15s6-.97 6-1.5v-1.3c-1.5.52-3.58.8-6 .8s-4.5-.28-6-.8v1.3Zm0 4C6 18.03 8.17 19 12 19s6-.97 6-1.5v-1.3c-1.5.52-3.58.8-6 .8s-4.5-.28-6-.8v1.3Z"/></svg>
+        </div>
+        <div>
+          <div class="brand-title">政策与市场事件数据库</div>
+          <div class="brand-subtitle">Policy & Market Events Database</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="sync-meta">
+          <span class="dot ok"></span>
+          <span>数据源 <b id="sourceHealth">12/14</b> 正常</span>
+          <span class="divider">|</span>
+          <span>最后更新：<b id="lastUpdated">2026-08-20 15:12</b></span>
+        </div>
+        <button class="primary-btn" id="syncBtn">⟳ 同步更新</button>
+      </div>
+    </header>
+
+    <main class="page">
+      <nav class="tabs" aria-label="主导航">
+        <button class="tab active" data-view="dashboard">仪表盘</button>
+        <button class="tab" data-view="policies">政策库</button>
+        <button class="tab" data-view="market">市场反应</button>
+        <button class="tab" data-view="compliance">履约节点</button>
+        <button class="tab" data-view="events">重要市场节点</button>
+        <button class="tab" data-view="parameters">关键参数</button>
+        <button class="tab" data-view="sources">数据源状态</button>
+      </nav>
+
+      <section class="search-strip">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 20-4.35-4.35a7.5 7.5 0 1 0-1.41 1.41L20 21l1-1ZM5 11.5a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0Z"/></svg>
+          <input id="globalSearch" placeholder="搜索政策名称、文号、发布机构、关键词……">
+        </div>
+        <button class="secondary-btn" id="advancedBtn">高级筛选</button>
+      </section>
+
+      <section id="dashboard" class="view active">
+        <div class="metrics-grid">
+          <article class="metric-card">
+            <div class="metric-label">政策总数</div>
+            <div class="metric-value" id="policyCount">247</div>
+            <div class="metric-note positive">↑ +12 本月新增</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">未来30天履约节点</div>
+            <div class="metric-value">18</div>
+            <div class="metric-note warning">● 5 项 7 日内到期</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">全国CEA最新收盘价</div>
+            <div class="metric-value">¥87.45<span class="unit">/tCO₂</span></div>
+            <div class="metric-note positive">↑ +2.35% 较上月</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">重要市场节点</div>
+            <div class="metric-value">9</div>
+            <div class="metric-note neutral">◆ 3 个本月发生</div>
+          </article>
+        </div>
+
+        <div class="dashboard-grid two-col">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>最新政策</h2>
+                <p>按发布日期倒序展示</p>
+              </div>
+              <button class="link-btn" data-jump="policies">查看全部 →</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>日期</th><th>政策名称</th><th>发布机构</th><th>分类</th></tr>
+                </thead>
+                <tbody id="latestPolicies"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>即将到期履约节点</h2>
+                <p>优先展示高风险节点</p>
+              </div>
+              <button class="link-btn" data-jump="compliance">查看全部 →</button>
+            </div>
+            <div id="deadlineList" class="deadline-list"></div>
+          </section>
+        </div>
+
+        <div class="dashboard-grid two-col">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>重要市场事件</h2>
+                <p>政策、交易、履约与制度节点</p>
+              </div>
+              <button class="link-btn" data-jump="events">时间线 →</button>
+            </div>
+            <div id="eventTimeline" class="timeline"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>近期市场反应</h2>
+                <p>演示数据 · 后续可接真实行情 API</p>
+              </div>
+              <button class="link-btn" data-jump="market">市场详情 →</button>
+            </div>
+            <div id="marketSnapshot" class="market-snapshot"></div>
+          </section>
+        </div>
+
+        <section class="module-section">
+          <div class="section-title">
+            <div>
+              <h2>六大核心数据库维度</h2>
+              <p>从政策文本中提取、归类并支持反向检索</p>
+            </div>
+          </div>
+          <div class="module-grid">
+            <button class="module-card" data-jump="policies">
+              <span class="module-no">01</span><h3>文件信息</h3>
+              <p>政策名称、文号、发布机构、发布日期、原文链接及附件</p>
+            </button>
+            <button class="module-card" data-jump="policies">
+              <span class="module-no">02</span><h3>适用范围</h3>
+              <p>涉及市场、交易产品、适用企业、业务环节及有效状态</p>
+            </button>
+            <button class="module-card" data-jump="parameters">
+              <span class="module-no">03</span><h3>关键参数</h3>
+              <p>纳入标准、配额分配方法、抵销比例、交易限制及处罚规定</p>
+            </button>
+            <button class="module-card" data-jump="compliance">
+              <span class="module-no">04</span><h3>履约节点</h3>
+              <p>报告、核查、配额核发、抵销与清缴等关键节点</p>
+            </button>
+            <button class="module-card" data-jump="events">
+              <span class="module-no">05</span><h3>重要市场节点</h3>
+              <p>扩围、竞价、方法学发布、交易规则调整及制度性事件</p>
+            </button>
+            <button class="module-card" data-jump="market">
+              <span class="module-no">06</span><h3>市场反应</h3>
+              <p>事件前后价格、成交量、涨跌幅及波动率变化</p>
+            </button>
+          </div>
+        </section>
+      </section>
+
+      <section id="policies" class="view">
+        <div class="section-title inline-title">
+          <div><h1>政策库</h1><p>支持名称、文号、机构、类别、市场和行业检索</p></div>
+          <button class="primary-btn small">＋ 新增政策</button>
+        </div>
+
+        <div class="filter-bar">
+          <select id="categoryFilter">
+            <option value="">全部类别</option>
+            <option>CCER政策</option><option>全国碳市场</option><option>地方碳市场</option>
+            <option>绿电绿证</option><option>生态环境综合政策</option>
+          </select>
+          <select id="publisherFilter">
+            <option value="">全部发布机构</option>
+          </select>
+          <input id="dateFrom" type="date" aria-label="开始日期">
+          <span class="to">至</span>
+          <input id="dateTo" type="date" aria-label="结束日期">
+          <button class="secondary-btn" id="resetFilters">重置</button>
+        </div>
+
+        <section class="panel">
+          <div class="table-wrap">
+            <table class="policy-table">
+              <thead>
+                <tr><th>发布日期</th><th>政策名称</th><th>文号</th><th>发布机构</th><th>分类</th><th>状态</th><th></th></tr>
+              </thead>
+              <tbody id="policyTable"></tbody>
+            </table>
+          </div>
+          <div class="table-footer"><span id="policyResultCount"></span><span>演示数据</span></div>
+        </section>
+      </section>
+
+      <section id="market" class="view">
+        <div class="section-title">
+          <div><h1>市场反应</h1><p>政策事件与市场量价变化的联动观察</p></div>
+        </div>
+        <div id="marketCards" class="market-cards"></div>
+        <section class="panel">
+          <div class="panel-head"><div><h2>事件窗口分析</h2><p>以政策发布日 T 为基准的前后窗口</p></div></div>
+          <div class="window-grid" id="windowGrid"></div>
+        </section>
+      </section>
+
+      <section id="compliance" class="view">
+        <div class="section-title"><div><h1>履约节点</h1><p>按市场、节点类型和到期风险跟踪</p></div></div>
+        <div class="kanban" id="complianceBoard"></div>
+      </section>
+
+      <section id="events" class="view">
+        <div class="section-title"><div><h1>重要市场节点</h1><p>制度、扩围、履约、交易与方法学事件时间线</p></div></div>
+        <section class="panel">
+          <div id="fullTimeline" class="timeline full"></div>
+        </section>
+      </section>
+
+      <section id="parameters" class="view">
+        <div class="section-title"><div><h1>关键参数数据库</h1><p>结构化存储政策中的可比较数值与规则</p></div></div>
+        <section class="panel">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>参数类型</th><th>参数名称</th><th>数值</th><th>单位</th><th>适用市场</th><th>来源政策</th></tr></thead>
+              <tbody id="parameterTable"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section id="sources" class="view">
+        <div class="section-title"><div><h1>数据源状态</h1><p>监控采集源、更新时间与同步健康度</p></div></div>
+        <div class="source-grid" id="sourceGrid"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="policyDialog">
+    <div class="dialog-head">
+      <div><span class="eyebrow">政策详情</span><h2 id="dialogTitle"></h2></div>
+      <button class="icon-btn" id="closeDialog" aria-label="关闭">×</button>
+    </div>
+    <div class="dialog-body" id="dialogBody"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
