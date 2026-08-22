@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-08-21T11:37:51+08:00",
+  "generated_at": "2026-08-22T11:24:45+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 79,
+  "policy_count": 80,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -18,6 +18,39 @@ window.LIVE_POLICY_META = {
   ]
 };
 window.LIVE_POLICIES = [
+  {
+    "id": 299329458498,
+    "date": "2026-08-21",
+    "title": "健全能源领域节能降碳机制",
+    "doc": "",
+    "publisher": "国家能源局",
+    "category": "CCER政策",
+    "status": "有效",
+    "market": "CCER",
+    "summary": "国家能源网",
+    "source_url": "https://www.nea.gov.cn/20260821/f374a9386256432ebcb1f81d5d6e3f45/c.html",
+    "source_agency": "国家能源局",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "能源",
+      "电力"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
   {
     "id": 690591130376,
     "date": "2026-08-17",
