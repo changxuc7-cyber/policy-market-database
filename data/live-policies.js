@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-08-24T11:41:47+08:00",
+  "generated_at": "2026-08-25T11:30:27+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 80,
+  "policy_count": 79,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -69,42 +69,6 @@ window.LIVE_POLICIES = [
     "industries": [
       "发电",
       "交通",
-      "能源",
-      "电力"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
-  {
-    "id": 113646559411,
-    "date": "2026-08-05",
-    "title": "培育壮大绿色燃料产业，加快构建新型能源体系",
-    "doc": "",
-    "publisher": "国家能源局",
-    "category": "全国碳市场",
-    "status": "有效",
-    "market": "全国CEA",
-    "summary": "国家能源网",
-    "source_url": "https://www.nea.gov.cn/20260805/6e249e0e560147e3b96e64b79c4b6985/c.html",
-    "source_agency": "国家能源局",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "发电",
-      "化工",
-      "建材",
       "能源",
       "电力"
     ],
