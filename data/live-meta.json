@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-02T08:47:05+08:00",
+  "generated_at": "2026-09-03T08:48:06+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 74,
+  "policy_count": 75,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",

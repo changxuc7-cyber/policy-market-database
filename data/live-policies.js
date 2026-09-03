@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-09-02T08:47:05+08:00",
+  "generated_at": "2026-09-03T08:48:06+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 74,
+  "policy_count": 75,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -2642,6 +2642,38 @@ window.LIVE_POLICIES = [
       "农业",
       "林业",
       "能源"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
+  {
+    "id": 519268013035,
+    "date": "",
+    "title": "国家绿证核发交易系统",
+    "doc": "",
+    "publisher": "国家能源局",
+    "category": "绿电绿证",
+    "status": "有效",
+    "market": "绿电/绿证",
+    "summary": "å½å®¶ç»¿è¯æ ¸åäº¤æç³»ç»ï¼ç®ç§°âç»¿è¯ç³»ç»âï¼æ¯ç±å½å®¶è½æºå±ç»ç»å»ºè®¾å¹¶è¿è¡çå½å®¶çº§ä¿¡æ¯åå¹³å°ï¼ç¨äºå¯åçè½æºç»¿è²çµåè¯ä¹¦ï¼ç®ç§°",
+    "source_url": "https://gec.nea.gov.cn/#/login",
+    "source_agency": "国家能源局",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "综合"
     ],
     "parameters": [
       [
