@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-09-09T08:49:18+08:00",
+  "generated_at": "2026-09-10T08:49:25+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 75,
+  "policy_count": 72,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -91,73 +91,6 @@ window.LIVE_POLICIES = [
     "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
   },
   {
-    "id": 827897965053,
-    "date": "2026-08-27",
-    "title": "2026年7月中国绿证价格指数",
-    "doc": "",
-    "publisher": "国家能源局",
-    "category": "绿电绿证",
-    "status": "有效",
-    "market": "绿电/绿证",
-    "summary": "国家能源网",
-    "source_url": "https://www.nea.gov.cn/20260827/49fc6ada6cba44a9984d9839d22b4944/c.html",
-    "source_agency": "国家能源局",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "能源",
-      "电力"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
-  {
-    "id": 458405015298,
-    "date": "2026-08-26",
-    "title": "国家能源局发布2026年7月全国可再生能源绿色电力证书核发及交易数据",
-    "doc": "",
-    "publisher": "国家能源局",
-    "category": "绿电绿证",
-    "status": "有效",
-    "market": "绿电/绿证",
-    "summary": "国家能源网",
-    "source_url": "https://www.nea.gov.cn/20260826/ec18dac54d4f4e26a6a5e5fcca27e74f/c.html",
-    "source_agency": "国家能源局",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "发电",
-      "能源",
-      "电力"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
-  {
     "id": 690591130376,
     "date": "2026-08-17",
     "title": "国家能源局组织召开全国可再生能源电力开发建设月度（7月）调度视频会",
@@ -168,41 +101,6 @@ window.LIVE_POLICIES = [
     "market": "绿电/绿证",
     "summary": "国家能源网",
     "source_url": "https://www.nea.gov.cn/20260817/3b9aadf9d3e540879aa8e1d15405ff71/c.html",
-    "source_agency": "国家能源局",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "发电",
-      "交通",
-      "能源",
-      "电力"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
-  {
-    "id": 771737979685,
-    "date": "2026-07-30",
-    "title": "国家能源局召开扩大绿电应用专题会暨《可再生能源消费最低比重目标和可再生能源电力消纳责任权重制度实施办法》政策宣贯会",
-    "doc": "",
-    "publisher": "国家能源局",
-    "category": "双碳/碳排放管理",
-    "status": "有效",
-    "market": "双碳政策",
-    "summary": "国家能源网",
-    "source_url": "https://www.nea.gov.cn/20260730/32394addd74a434c93d1a42e9d50366c/c.html",
     "source_agency": "国家能源局",
     "scope": [
       "全国"
