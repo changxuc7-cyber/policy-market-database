@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-09-11T08:47:00+08:00",
+  "generated_at": "2026-09-12T08:46:22+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -18,6 +18,42 @@ window.LIVE_POLICY_META = {
   ]
 };
 window.LIVE_POLICIES = [
+  {
+    "id": 823461086979,
+    "date": "2026-09-11",
+    "title": "能源绿色低碳转型取得重要进展",
+    "doc": "",
+    "publisher": "国家能源局",
+    "category": "双碳/碳排放管理",
+    "status": "有效",
+    "market": "双碳政策",
+    "summary": "国家能源网",
+    "source_url": "https://www.nea.gov.cn/20260911/cdeb66631d1644d08dbf904f6f87cdf4/c.html",
+    "source_agency": "国家能源局",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "发电",
+      "建筑",
+      "交通",
+      "能源",
+      "电力"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
   {
     "id": 1027650492816,
     "date": "2026-09-02",
@@ -73,41 +109,6 @@ window.LIVE_POLICIES = [
       "全国"
     ],
     "industries": [
-      "能源",
-      "电力"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
-  {
-    "id": 690591130376,
-    "date": "2026-08-17",
-    "title": "国家能源局组织召开全国可再生能源电力开发建设月度（7月）调度视频会",
-    "doc": "",
-    "publisher": "国家能源局",
-    "category": "绿电绿证",
-    "status": "有效",
-    "market": "绿电/绿证",
-    "summary": "国家能源网",
-    "source_url": "https://www.nea.gov.cn/20260817/3b9aadf9d3e540879aa8e1d15405ff71/c.html",
-    "source_agency": "国家能源局",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "发电",
-      "交通",
       "能源",
       "电力"
     ],
