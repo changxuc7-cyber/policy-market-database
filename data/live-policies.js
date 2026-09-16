@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-09-15T08:49:02+08:00",
+  "generated_at": "2026-09-16T08:47:44+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 72,
+  "policy_count": 74,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -485,6 +485,39 @@ window.LIVE_POLICIES = [
     "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
   },
   {
+    "id": 477754111702,
+    "date": "2026-06-12",
+    "title": "国家能源局综合司关于内蒙古电力交易中心开展绿色电力证书交易请示的复函",
+    "doc": "国发〔2026〕6号",
+    "publisher": "国家能源局",
+    "category": "绿电绿证",
+    "status": "有效",
+    "market": "绿电/绿证",
+    "summary": "国家能源局官网",
+    "source_url": "https://www.nea.gov.cn/20260625/5d6aff8953ba4cb6b104dfdea6c0fbae/c.html",
+    "source_agency": "国家能源局",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "能源",
+      "电力"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
+  {
     "id": 194134237373,
     "date": "2026-06-01",
     "title": "国家能源局有关负责同志就《非化石能源电力消费核算指南（试行）》答记者问",
@@ -890,6 +923,40 @@ window.LIVE_POLICIES = [
     "industries": [
       "发电",
       "化工",
+      "能源",
+      "电力"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
+  {
+    "id": 458896945136,
+    "date": "2025-11-28",
+    "title": "国家能源局关于印发《可再生能源绿色电力证书管理实施细则（试行）》的通知",
+    "doc": "发改能源〔2023〕1044号",
+    "publisher": "国家能源局",
+    "category": "CCER政策",
+    "status": "有效",
+    "market": "CCER",
+    "summary": "国家能源局官网",
+    "source_url": "https://www.nea.gov.cn/20260107/9a905f263a8b4aa4a06e1a96855cc8eb/c.html",
+    "source_agency": "国家能源局",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "发电",
       "能源",
       "电力"
     ],
