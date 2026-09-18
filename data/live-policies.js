@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-09-17T08:48:33+08:00",
+  "generated_at": "2026-09-18T08:46:55+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 74,
+  "policy_count": 75,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -111,6 +111,41 @@ window.LIVE_POLICIES = [
     "industries": [
       "能源",
       "电力"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
+  {
+    "id": 988935270603,
+    "date": "2026-07-29",
+    "title": "关于发布国家生态环境标准《汽车大气污染物和温室气体排放测算方法（交通量法）》的公告",
+    "doc": "",
+    "publisher": "生态环境部",
+    "category": "气候变化/温室气体",
+    "status": "有效",
+    "market": "气候政策",
+    "summary": "标准名称、编号如下： 《汽车大气污染物和温室气体排放测算方法（交通量法）》（HJ 180-2026）",
+    "source_url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk01/202609/t20260917_1166667.html",
+    "source_agency": "生态环境部",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "交通",
+      "农业",
+      "林业",
+      "能源"
     ],
     "parameters": [
       [
