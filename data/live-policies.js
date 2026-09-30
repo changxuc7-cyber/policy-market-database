@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-09-29T14:03:29+08:00",
+  "generated_at": "2026-09-30T13:51:55+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 73,
+  "policy_count": 74,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -19,21 +19,22 @@ window.LIVE_POLICY_META = {
 };
 window.LIVE_POLICIES = [
   {
-    "id": 717288503743,
-    "date": "2026-09-18",
-    "title": "2026年8月中国绿证价格指数",
+    "id": 963029831450,
+    "date": "2026-09-30",
+    "title": "国家能源局发布2026年8月全国可再生能源绿色电力证书核发及交易数据",
     "doc": "",
     "publisher": "国家能源局",
     "category": "绿电绿证",
     "status": "有效",
     "market": "绿电/绿证",
     "summary": "国家能源网",
-    "source_url": "https://www.nea.gov.cn/20260918/c52a7869bd3f4f31a716237a6cce4be8/c.html",
+    "source_url": "https://www.nea.gov.cn/20260930/8cee035ddfd7417fbea02b55cc386469/c.html",
     "source_agency": "国家能源局",
     "scope": [
       "全国"
     ],
     "industries": [
+      "发电",
       "能源",
       "电力"
     ],
@@ -2372,6 +2373,42 @@ window.LIVE_POLICIES = [
       "全国"
     ],
     "industries": [
+      "交通",
+      "农业",
+      "林业",
+      "能源"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
+  {
+    "id": 123868860420,
+    "date": "2023-03-15",
+    "title": "关于做好2021、2022年度全国碳排放权交易配额分配相关工作的通知",
+    "doc": "环规气候〔2023〕1号",
+    "publisher": "生态环境部",
+    "category": "CCER政策",
+    "status": "有效",
+    "market": "CCER",
+    "summary": "经碳达峰碳中和工作领导小组同意，现印发给你们，请按照相关要求，做好2021、2022年度配额预分配、调整、核定、预支、清缴等各项工作",
+    "source_url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202303/t20230315_1019707.html",
+    "source_agency": "生态环境部",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "发电",
       "交通",
       "农业",
       "林业",
