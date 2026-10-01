@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-09-30T13:51:55+08:00",
+  "generated_at": "2026-10-01T14:25:49+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 74,
+  "policy_count": 73,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -19,22 +19,22 @@ window.LIVE_POLICY_META = {
 };
 window.LIVE_POLICIES = [
   {
-    "id": 963029831450,
+    "id": 716316434743,
     "date": "2026-09-30",
-    "title": "国家能源局发布2026年8月全国可再生能源绿色电力证书核发及交易数据",
+    "title": "推进能源体系绿色低碳转型",
     "doc": "",
     "publisher": "国家能源局",
-    "category": "绿电绿证",
+    "category": "全国碳市场",
     "status": "有效",
-    "market": "绿电/绿证",
+    "market": "全国CEA",
     "summary": "国家能源网",
-    "source_url": "https://www.nea.gov.cn/20260930/8cee035ddfd7417fbea02b55cc386469/c.html",
+    "source_url": "https://www.nea.gov.cn/20260930/161af7d1cdfe47d98a34cb2219102590/c.html",
     "source_agency": "国家能源局",
     "scope": [
       "全国"
     ],
     "industries": [
-      "发电",
+      "石化",
       "能源",
       "电力"
     ],
@@ -53,24 +53,22 @@ window.LIVE_POLICIES = [
     "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
   },
   {
-    "id": 823461086979,
-    "date": "2026-09-11",
-    "title": "能源绿色低碳转型取得重要进展",
+    "id": 963029831450,
+    "date": "2026-09-30",
+    "title": "国家能源局发布2026年8月全国可再生能源绿色电力证书核发及交易数据",
     "doc": "",
     "publisher": "国家能源局",
-    "category": "双碳/碳排放管理",
+    "category": "绿电绿证",
     "status": "有效",
-    "market": "双碳政策",
+    "market": "绿电/绿证",
     "summary": "国家能源网",
-    "source_url": "https://www.nea.gov.cn/20260911/cdeb66631d1644d08dbf904f6f87cdf4/c.html",
+    "source_url": "https://www.nea.gov.cn/20260930/8cee035ddfd7417fbea02b55cc386469/c.html",
     "source_agency": "国家能源局",
     "scope": [
       "全国"
     ],
     "industries": [
       "发电",
-      "建筑",
-      "交通",
       "能源",
       "电力"
     ],
@@ -112,39 +110,6 @@ window.LIVE_POLICIES = [
       "农业",
       "林业",
       "能源"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
-  {
-    "id": 405711449579,
-    "date": "2026-08-31",
-    "title": "机制电量对应绿证是什么？是怎么核发的？",
-    "doc": "发改价格〔2025〕136号",
-    "publisher": "国家能源局",
-    "category": "绿电绿证",
-    "status": "有效",
-    "market": "绿电/绿证",
-    "summary": "国家能源网",
-    "source_url": "https://www.nea.gov.cn/20260831/4debc365db384b4484afd5bfa7983ba1/c.html",
-    "source_agency": "国家能源局",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "能源",
-      "电力"
     ],
     "parameters": [
       [
