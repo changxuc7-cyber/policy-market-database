@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-10-10T14:16:25+08:00",
+  "generated_at": "2026-10-11T14:15:54+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 75,
+  "policy_count": 76,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -100,6 +100,41 @@ window.LIVE_POLICIES = [
     "market": "CCER",
     "summary": "现予以发布，并就做好该项方法学贯彻执行通知如下",
     "source_url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202610/t20261010_1175958.html",
+    "source_agency": "生态环境部",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "交通",
+      "农业",
+      "林业",
+      "能源"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
+  {
+    "id": 850178073484,
+    "date": "2026-10-10",
+    "title": "一图读懂 | 《温室气体自愿减排项目方法学 造林碳汇（CCER—14—001—V02）》",
+    "doc": "",
+    "publisher": "生态环境部",
+    "category": "CCER政策",
+    "status": "有效",
+    "market": "CCER",
+    "summary": "一图读懂 | 《温室气体自愿减排项目方法学 造林碳汇（CCER—14—001—V02）》",
+    "source_url": "https://www.mee.gov.cn/zcwj/zcjd/202610/t20261010_1177229.shtml",
     "source_agency": "生态环境部",
     "scope": [
       "全国"
