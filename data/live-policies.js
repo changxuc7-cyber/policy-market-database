@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-10-13T15:01:40+08:00",
+  "generated_at": "2026-10-14T13:15:58+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 76,
+  "policy_count": 75,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -835,44 +835,6 @@ window.LIVE_POLICIES = [
     ],
     "industries": [
       "能源"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
-  {
-    "id": 478728972265,
-    "date": "2026-04-23",
-    "title": "中共中央办公厅 国务院办公厅印发《碳达峰碳中和综合评价考核办法》",
-    "doc": "",
-    "publisher": "生态环境部",
-    "category": "全国碳市场",
-    "status": "有效",
-    "market": "全国CEA",
-    "summary": "中共中央办公厅 国务院办公厅印发《碳达峰碳中和综合评价考核办法》 中共中央办公厅 国务院办公厅印发《碳达峰碳中和综合评价考核办法》 发布时间：2026-04-23 来源：中国政府网 字号： [大] [中] [小] 新华社北京4月23日电 近日，中共中央办公厅、国务院办公厅印发《碳达峰碳中和综合评价考核办法》，并发出通知，要求各地区各部门认真遵照执行",
-    "source_url": "https://www.mee.gov.cn/zcwj/zyygwj/202604/t20260423_1149959.shtml",
-    "source_agency": "生态环境部",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "发电",
-      "化工",
-      "交通",
-      "农业",
-      "林业",
-      "能源",
-      "电力"
     ],
     "parameters": [
       [
