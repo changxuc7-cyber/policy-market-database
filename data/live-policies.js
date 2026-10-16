@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-10-15T13:03:00+08:00",
+  "generated_at": "2026-10-16T12:52:52+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 75,
+  "policy_count": 74,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -394,44 +394,6 @@ window.LIVE_POLICIES = [
       "能源",
       "电力",
       "数据中心"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
-  {
-    "id": 658863206529,
-    "date": "2026-06-26",
-    "title": "国家能源局关于印发《能源领域节能降碳行动计划（2026—2028年）》的通知",
-    "doc": "国能发规划〔2026〕45号",
-    "publisher": "国家能源局",
-    "category": "CCER政策",
-    "status": "有效",
-    "market": "CCER",
-    "summary": "国家能源局官网",
-    "source_url": "https://www.nea.gov.cn/20260710/4acf5873e20149cdbc52c709b16b30ff/c.html",
-    "source_agency": "国家能源局",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "发电",
-      "石化",
-      "化工",
-      "建筑",
-      "交通",
-      "能源",
-      "电力"
     ],
     "parameters": [
       [
