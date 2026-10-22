@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-10-21T13:12:05+08:00",
+  "generated_at": "2026-10-22T13:15:35+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 74,
+  "policy_count": 75,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -18,6 +18,41 @@ window.LIVE_POLICY_META = {
   ]
 };
 window.LIVE_POLICIES = [
+  {
+    "id": 743946374553,
+    "date": "2026-10-21",
+    "title": "加快煤电与新能源融合发展 助推电力行业绿色低碳转型",
+    "doc": "",
+    "publisher": "国家能源局",
+    "category": "全国碳市场",
+    "status": "有效",
+    "market": "全国CEA",
+    "summary": "国家能源网",
+    "source_url": "https://www.nea.gov.cn/20261021/6e331f2bc41149efbbe5eabe9ecbf2b4/c.html",
+    "source_agency": "国家能源局",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "发电",
+      "交通",
+      "能源",
+      "电力"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
   {
     "id": 983835017807,
     "date": "2026-10-16",
