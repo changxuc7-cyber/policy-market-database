@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-10-29T14:18:19+08:00",
+  "generated_at": "2026-10-30T14:18:44+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -19,21 +19,22 @@ window.LIVE_POLICY_META = {
 };
 window.LIVE_POLICIES = [
   {
-    "id": 953560078414,
-    "date": "2026-10-23",
-    "title": "2026年9月中国绿证价格指数",
+    "id": 732286403936,
+    "date": "2026-10-29",
+    "title": "国家能源局发布2026年9月全国可再生能源绿色电力证书核发及交易数据",
     "doc": "",
     "publisher": "国家能源局",
     "category": "绿电绿证",
     "status": "有效",
     "market": "绿电/绿证",
     "summary": "国家能源网",
-    "source_url": "https://www.nea.gov.cn/20261023/39f33285deec4c13a5c6ccaf4bea2816/c.html",
+    "source_url": "https://www.nea.gov.cn/20261029/07750da8d7d641d0a50071cdccd3c7e5/c.html",
     "source_agency": "国家能源局",
     "scope": [
       "全国"
     ],
     "industries": [
+      "发电",
       "能源",
       "电力"
     ],
