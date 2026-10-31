@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-10-30T14:18:44+08:00",
+  "generated_at": "2026-10-31T14:10:02+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 75,
+  "policy_count": 74,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -70,40 +70,6 @@ window.LIVE_POLICIES = [
     "industries": [
       "发电",
       "交通",
-      "能源",
-      "电力"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
-  {
-    "id": 983835017807,
-    "date": "2026-10-16",
-    "title": "全国首批跨境绿证集中交易达成 内地绿证规模化落地香港",
-    "doc": "",
-    "publisher": "国家能源局",
-    "category": "绿电绿证",
-    "status": "有效",
-    "market": "绿电/绿证",
-    "summary": "国家能源网",
-    "source_url": "https://www.nea.gov.cn/20261016/cbf62a9019704bfe9a3b8162b47a238a/c.html",
-    "source_agency": "国家能源局",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "发电",
       "能源",
       "电力"
     ],
