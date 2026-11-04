@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-11-03T15:09:17+08:00",
+  "generated_at": "2026-11-04T14:55:09+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
