@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-11-09T15:03:28+08:00",
+  "generated_at": "2026-11-10T15:40:38+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 68,
+  "policy_count": 70,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -18,6 +18,111 @@ window.LIVE_POLICY_META = {
   ]
 };
 window.LIVE_POLICIES = [
+  {
+    "id": 894956595417,
+    "date": "2026-11-09",
+    "title": "关于发布《温室气体自愿减排项目方法学 乔木林经营碳汇（CCER—13—001—V01）》等2项方法学的通知",
+    "doc": "环办气候函〔2026〕428号",
+    "publisher": "生态环境部办公厅 国家林草局办公室",
+    "category": "CCER政策",
+    "status": "有效",
+    "market": "CCER",
+    "summary": "现予以发布，并就做好《方法学》贯彻执行通知如下",
+    "source_url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202611/t20261109_1185815.html",
+    "source_agency": "生态环境部",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "交通",
+      "农业",
+      "林业",
+      "能源"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
+  {
+    "id": 112374872924,
+    "date": "2026-11-09",
+    "title": "一图读懂 | 《温室气体自愿减排项目方法学 更新造林碳汇（CCER-14-006-V01）》",
+    "doc": "",
+    "publisher": "生态环境部",
+    "category": "CCER政策",
+    "status": "有效",
+    "market": "CCER",
+    "summary": "一图读懂 | 《温室气体自愿减排项目方法学 更新造林碳汇（CCER-14-006-V01）》",
+    "source_url": "https://www.mee.gov.cn/zcwj/zcjd/202611/t20261109_1185832.shtml",
+    "source_agency": "生态环境部",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "交通",
+      "农业",
+      "林业",
+      "能源"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
+  {
+    "id": 216164998163,
+    "date": "2026-11-09",
+    "title": "一图读懂 | 《温室气体自愿减排项目方法学 乔木林经营碳汇（CCER-13-001-V01）》",
+    "doc": "",
+    "publisher": "生态环境部",
+    "category": "CCER政策",
+    "status": "有效",
+    "market": "CCER",
+    "summary": "一图读懂 | 《温室气体自愿减排项目方法学 乔木林经营碳汇（CCER-13-001-V01）》",
+    "source_url": "https://www.mee.gov.cn/zcwj/zcjd/202611/t20261109_1185831.shtml",
+    "source_agency": "生态环境部",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "交通",
+      "农业",
+      "林业",
+      "能源"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
   {
     "id": 732286403936,
     "date": "2026-10-29",
@@ -169,41 +274,6 @@ window.LIVE_POLICIES = [
     "market": "CCER",
     "summary": "现予以发布，并就做好该项方法学贯彻执行通知如下",
     "source_url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202610/t20261010_1175958.html",
-    "source_agency": "生态环境部",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "交通",
-      "农业",
-      "林业",
-      "能源"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
-  {
-    "id": 850178073484,
-    "date": "2026-10-10",
-    "title": "一图读懂 | 《温室气体自愿减排项目方法学 造林碳汇（CCER—14—001—V02）》",
-    "doc": "",
-    "publisher": "生态环境部",
-    "category": "CCER政策",
-    "status": "有效",
-    "market": "CCER",
-    "summary": "一图读懂 | 《温室气体自愿减排项目方法学 造林碳汇（CCER—14—001—V02）》",
-    "source_url": "https://www.mee.gov.cn/zcwj/zcjd/202610/t20261010_1177229.shtml",
     "source_agency": "生态环境部",
     "scope": [
       "全国"
