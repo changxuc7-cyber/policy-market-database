@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-11-12T15:35:29+08:00",
+  "generated_at": "2026-11-13T15:06:25+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 71,
+  "policy_count": 70,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -2030,38 +2030,6 @@ window.LIVE_POLICIES = [
       "发电",
       "能源",
       "电力"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
-  {
-    "id": 301117275727,
-    "date": "2024-07-23",
-    "title": "关于印发《电解铝行业节能降碳专项行动计划》的通知(发改环资〔2024〕972号)",
-    "doc": "发改环资〔2024〕972号",
-    "publisher": "国家发展改革委",
-    "category": "双碳/碳排放管理",
-    "status": "有效",
-    "market": "双碳政策",
-    "summary": "国家发展改革委 工业和信息化部 生态环境部 市场监管总局 国家能源局 2024年7月3日 附件： 《电解铝行业节能降碳专项行动计划》.pdf 《电解铝行业节能降碳专项行动计划》.ofd 相关政策与解读 排行榜",
-    "source_url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202407/t20240723_1391887.html",
-    "source_agency": "国家发展改革委",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "能源"
     ],
     "parameters": [
       [
