@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-11-13T15:06:25+08:00",
+  "generated_at": "2026-11-14T14:55:57+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 70,
+  "policy_count": 69,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -18,39 +18,6 @@ window.LIVE_POLICY_META = {
   ]
 };
 window.LIVE_POLICIES = [
-  {
-    "id": 970922431072,
-    "date": "2026-11-10",
-    "title": "新疆能源监管办指导新疆电力交易中心首次试点开展疆内小时级绿电交易",
-    "doc": "",
-    "publisher": "国家能源局",
-    "category": "绿电绿证",
-    "status": "有效",
-    "market": "绿电/绿证",
-    "summary": "国家能源网",
-    "source_url": "https://www.nea.gov.cn/20261110/2d88c447346d4cad9b11452b476ae93f/c.html",
-    "source_agency": "国家能源局",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "能源",
-      "电力"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
   {
     "id": 894956595417,
     "date": "2026-11-09",
