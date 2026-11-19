@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-11-18T15:53:13+08:00",
+  "generated_at": "2026-11-19T15:48:38+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -7,7 +7,7 @@ window.LIVE_POLICY_META = {
     "国家能源局",
     "生态环境部"
   ],
-  "policy_count": 70,
+  "policy_count": 71,
   "mode": "live-carbon-filtered",
   "topics": [
     "全国碳市场",
@@ -18,6 +18,39 @@ window.LIVE_POLICY_META = {
   ]
 };
 window.LIVE_POLICIES = [
+  {
+    "id": 350076281482,
+    "date": "2026-11-19",
+    "title": "如何理解《可再生能源绿色电力证书管理实施细则（试行）》（国能发资质规〔2025〕107 号）中规定绿证交易价格大于0元？采购绿证后，代理环节无偿分配给用户的模式，是否属于绿证交易行为？",
+    "doc": "",
+    "publisher": "国家能源局",
+    "category": "绿电绿证",
+    "status": "有效",
+    "market": "绿电/绿证",
+    "summary": "国家能源网",
+    "source_url": "https://www.nea.gov.cn/20261119/25ab9597e15a49ecab59d16b8c62c569/c.html",
+    "source_agency": "国家能源局",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "能源",
+      "电力"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
   {
     "id": 475987502749,
     "date": "2026-11-17",
