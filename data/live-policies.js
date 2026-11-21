@@ -1,5 +1,5 @@
 window.LIVE_POLICY_META = {
-  "generated_at": "2026-11-20T15:41:25+08:00",
+  "generated_at": "2026-11-21T15:38:11+08:00",
   "source_label": "权威碳政策",
   "source_count": 3,
   "sources": [
@@ -18,6 +18,39 @@ window.LIVE_POLICY_META = {
   ]
 };
 window.LIVE_POLICIES = [
+  {
+    "id": 428400641305,
+    "date": "2026-11-20",
+    "title": "2026年10月中国绿证价格指数",
+    "doc": "",
+    "publisher": "国家能源局",
+    "category": "绿电绿证",
+    "status": "有效",
+    "market": "绿电/绿证",
+    "summary": "国家能源网",
+    "source_url": "https://www.nea.gov.cn/20261120/96084b2564ba4e46aa8774ece7573480/c.html",
+    "source_agency": "国家能源局",
+    "scope": [
+      "全国"
+    ],
+    "industries": [
+      "能源",
+      "电力"
+    ],
+    "parameters": [
+      [
+        "结构化状态",
+        "待后续提取关键参数"
+      ]
+    ],
+    "compliance": [
+      [
+        "执行节点",
+        "待后续提取履约节点"
+      ]
+    ],
+    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
+  },
   {
     "id": 350076281482,
     "date": "2026-11-19",
@@ -2239,41 +2272,6 @@ window.LIVE_POLICIES = [
       "能源",
       "电力",
       "数据中心"
-    ],
-    "parameters": [
-      [
-        "结构化状态",
-        "待后续提取关键参数"
-      ]
-    ],
-    "compliance": [
-      [
-        "执行节点",
-        "待后续提取履约节点"
-      ]
-    ],
-    "impact": "政策事实来自权威政府网站；市场影响需结合真实交易数据计算。"
-  },
-  {
-    "id": 932138949889,
-    "date": "2023-10-19",
-    "title": "温室气体自愿减排交易管理办法（试行）",
-    "doc": "",
-    "publisher": "生态环境部 市场监管总局",
-    "category": "CCER政策",
-    "status": "有效",
-    "market": "CCER",
-    "summary": "温室气体自愿减排交易管理办法（试行） 名 称 温室气体自愿减排交易管理办法（试行） 索 引 号 000014672/2023-00340 分 类 应对气候变化 发布机关 生态环境部 市场监管总局 生成日期 2023-10-19 文 号 部令 第31号 主 题 词 温室气体自愿减排交易管理办法（试行） 《温室气体自愿减排交易管理办法（试行）》已于2023年9月",
-    "source_url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk02/202310/t20231020_1043694.html",
-    "source_agency": "生态环境部",
-    "scope": [
-      "全国"
-    ],
-    "industries": [
-      "交通",
-      "农业",
-      "林业",
-      "能源"
     ],
     "parameters": [
       [
